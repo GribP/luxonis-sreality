@@ -3,6 +3,7 @@ from flask import Flask
 from config import BaseConfig
 
 from app.extensions import db
+from app.utils.scraper.crawler import crawl_flats
 
 
 def create_app():
@@ -19,5 +20,9 @@ def create_app():
       db.drop_all()
       db.create_all()
       db.session.commit()
+
+  @app.cli.command("scrap")
+  def scrap():
+    crawl_flats()
 
   return app
