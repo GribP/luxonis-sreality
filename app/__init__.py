@@ -13,6 +13,8 @@ def create_app():
 
   @app.cli.command("migrate")
   def migrate():
+    from app.models.flat import Flat as _
+
     with app.app_context():
       db.drop_all()
       db.create_all()
