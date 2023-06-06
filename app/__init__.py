@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, send_file
 
 from config import BaseConfig
 
@@ -18,7 +18,7 @@ def create_app():
 
   @app.route("/")
   def index():
-    return redirect("/flats")
+    return send_file("templates/index.html")
 
   @app.cli.command("migrate")
   def migrate():
